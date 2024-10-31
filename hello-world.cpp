@@ -1,47 +1,14 @@
 #include <iostream>
 
-void Swap(int &a, int &b)
+template <typename T>
+T Add(T a, T b)
 {
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
-void QuickSort(int start, int end, int *Array)
-{
-    if (start >= end)
-        return;
-
-    int idxOfPivot = start;
-
-    int head = start + 1;
-    int tail = end;
-
-    while (head <= tail)
-    {
-        while (head <= end && Array[head] <= Array[idxOfPivot])
-            head++;
-
-        while (tail > start && Array[tail] >= Array[idxOfPivot])
-            tail--;
-
-        if (head < tail)
-            Swap(Array[head], Array[tail]);
-    }
-    Swap(Array[tail], Array[idxOfPivot]);
-
-    QuickSort(start, tail - 1, Array);
-    QuickSort(tail + 1, end, Array);
+    return a + b;
 }
 
 int main()
 {
-    int aList[5] = {50, 10, 10, 20, 40};
-
-    QuickSort(0, 4, aList);
-
-    for (auto n : aList)
-        std::cout << n << " ";
+    std::cout << Add(1.1, 2.2) << std::endl;
 
     return 0;
 }
